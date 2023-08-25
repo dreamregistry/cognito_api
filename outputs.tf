@@ -7,3 +7,8 @@ output "COGNITO_RESOURCE_SERVER_IDENTIFIER" {
   description = "Cognito Resource Server Identifier to be used as prefix for scopes"
   value       = aws_cognito_resource_server.this.identifier
 }
+
+output "USER_POOL_ID" {
+  description = "Cognito User Pool ID"
+  value       = var.cognito_user_pool_id
+}
