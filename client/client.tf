@@ -18,7 +18,6 @@ resource "github_repository_file" "client_package_files" {
   repository = github_repository.client_package.name
   file       = each.value
   content    = templatefile("${path.module}/template/${each.value}", {
-    userPoolId = var.cognito_user_pool_id
     identifier = var.resource_identifier
     repository = upper(var.client_package_repository)
     serverUrl  = var.root_url
