@@ -4,9 +4,49 @@ DReAM package for creating amazon cognito resource server.
 
 ## Usage
 
+This package requires the following environment variables to be set in your
+DReAM project: `TF_VAR_root_url`.
+
+### Basic
+
 ```shell
 dream add cognito_api
 ```
+
+### With custom scopes
+
+Add the following dreamvars configuration:
+
+```yaml
+# dreamvars/cognito_api.yaml
+
+scopes:
+  - name: read
+    description: Read access
+  - name: write
+    description: Write access
+```
+
+Then run `dream add cognito_api` or `dream up` to update the cognito resource
+server.
+
+### Generating client package
+
+Add the following dreamvars configuration:
+
+```yaml
+# dreamvars/cognito_api.yaml
+
+create_client_package: true
+client_package_repository: movies_cognito_api
+scopes:
+  - name: read
+    description: Read movies
+  - name: write
+    description: Create, update and delete movies
+```
+
+Then run `dream add cognito_api` or `dream up`.
 
 ### Integration in Express app
 
