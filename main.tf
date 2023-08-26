@@ -6,10 +6,18 @@ terraform {
       source  = "registry.terraform.io/hashicorp/aws"
       version = "~> 5.0"
     }
+
+    github = {
+      source  = "integrations/github"
+      version = "~> 5.0"
+    }
   }
 }
 
 provider "aws" {}
+provider "github" {
+  owner = var.package_organization
+}
 
 locals {
   name = var.name == null ? random_pet.client_name.id : var.name
@@ -33,4 +41,13 @@ resource "aws_cognito_resource_server" "this" {
       scope_description = scope.value.description
     }
   }
+}
+
+module "client" {
+  source                    = "./client"
+  count                     = var.create_client_package ? 1 : 0
+  cognito_user_pool_id      = var.cognito_user_pool_id
+  resource_identifier       = aws_cognito_resource_server.this.identifier
+  root_url                  = var.root_url
+  client_package_repository = var.client_package_repository
 }

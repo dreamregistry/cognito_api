@@ -23,3 +23,25 @@ variable "public_domain_suffix" {
   description = "The public domain suffix used to compute the resource server identifier."
 }
 
+variable "package_organization" {
+  type        = string
+  description = "The GitHub organization that hosts DReAM packages."
+}
+
+variable "create_client_package" {
+  type        = bool
+  description = "Whether to create a client package for the resource server."
+  default     = false
+}
+
+variable "client_package_repository" {
+  type        = string
+  description = "The GitHub repository to create the client package in."
+  default     = null
+}
+
+variable "root_url" {
+  type        = string
+  description = "The URL of the resource server."
+}
+
