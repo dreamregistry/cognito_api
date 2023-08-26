@@ -1,6 +1,6 @@
 output "OIDC_SCOPES_${repository}" {
   description = "OIDC scopes granted to the client"
-  value       = join(" ", var.scopes)
+  value       = join(" ", local.scopes)
 }
 
 
