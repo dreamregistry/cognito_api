@@ -18,11 +18,6 @@ variable "scopes" {
   default = []
 }
 
-variable "public_domain_suffix" {
-  type        = string
-  description = "The public domain suffix used to compute the resource server identifier."
-}
-
 variable "package_organization" {
   type        = string
   description = "The GitHub organization that hosts DReAM packages."
@@ -57,3 +52,8 @@ variable "domain_suffix" {
   description = "The domain suffix used for deriving the full domain name."
 }
 
+variable "public_domain_suffix" {
+  type        = string
+  description = "The public domain suffix used to compute the resource server identifier."
+  default = null
+}

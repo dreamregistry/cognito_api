@@ -21,6 +21,7 @@ provider "github" {
 
 locals {
   name = var.name == null ? random_pet.client_name.id : var.name
+  public_domain_suffix = var.public_domain_suffix != null ? var.public_domain_suffix : var.domain_suffix
   root_url = var.root_url != null ? var.root_url: "https://${var.domain_prefix}.${var.domain_suffix}"
 }
 
@@ -32,7 +33,7 @@ resource "random_pet" "client_name" {}
 
 resource "aws_cognito_resource_server" "this" {
   user_pool_id = var.cognito_user_pool_id
-  identifier   = "https://${random_pet.client_name.id}.${var.public_domain_suffix}"
+  identifier   = "https://${random_pet.client_name.id}.${local.public_domain_suffix}"
   name         = local.name
 
   dynamic "scope" {
