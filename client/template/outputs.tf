@@ -5,5 +5,5 @@ output "OIDC_SCOPES_${repository}" {
 
 
 output "${repository}_URL" {
-  value = "${serverUrl}"
+  value = var.use_local_instance ? var.local_server_url : "${serverUrl}"
 }
