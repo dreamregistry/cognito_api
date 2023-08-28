@@ -15,3 +15,9 @@ variable "local_server_url" {
   type        = string
   default     = "http://localhost:4000"
 }
+
+variable "local_server_resource_id" {
+  description = "The resource id of the local instance of the api"
+  type        = string
+  default     = null
+}
