@@ -21,6 +21,7 @@ provider "github" {
 
 locals {
   name = var.name == null ? random_pet.client_name.id : var.name
+  root_url = var.root_url != null ? var.root_url: "https://${var.domain_prefix}.${var.domain_suffix}"
 }
 
 data "aws_cognito_user_pool_clients" "clients" {
@@ -48,6 +49,6 @@ module "client" {
   count                     = var.create_client_package ? 1 : 0
   cognito_user_pool_id      = var.cognito_user_pool_id
   resource_identifier       = aws_cognito_resource_server.this.identifier
-  root_url                  = var.root_url
+  root_url                  = local.root_url
   client_package_repository = var.client_package_repository
 }

@@ -43,5 +43,17 @@ variable "client_package_repository" {
 variable "root_url" {
   type        = string
   description = "The URL of the resource server."
+  default     = null
+}
+
+variable "domain_prefix" {
+  type        = string
+  description = "The URL of the resource server."
+  default     = null
+}
+
+variable "domain_suffix" {
+  type        = string
+  description = "The domain suffix used for deriving the full domain name."
 }
 
