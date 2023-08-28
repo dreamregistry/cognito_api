@@ -7,8 +7,6 @@ DReAM package for creating amazon cognito resource server.
 This package requires the following environment variables to be set in your
 DReAM project: `TF_VAR_root_url` or `TF_VAR_domain_prefix`.
 
-```shell
-
 ### Basic
 
 ```shell
